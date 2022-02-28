@@ -1,0 +1,25 @@
+{
+  "name": "just-engine",
+  "version": "0.0.1",
+  "description": "Game engine for creating 2d games",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanilChugaev/just-engine.git"
+  },
+  "keywords": [
+    "just-engine",
+    "2d",
+    "game",
+    "engine"
+  ],
+  "author": "danilchugaev@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DanilChugaev/just-engine/issues"
+  },
+  "homepage": "https://github.com/DanilChugaev/just-engine#readme"
+}
