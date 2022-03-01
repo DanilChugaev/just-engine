@@ -1,3 +1,3 @@
 # Just Engine
 
-![logo](./source/logo.svg)
+![logo](./media/logo.svg)
