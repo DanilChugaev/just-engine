@@ -20,6 +20,7 @@ module.exports = {
     'test': true,
     'expect': true,
     'beforeEach': true,
+    'Nullable': true,
   },
   rules: {
     '@typescript-eslint/ban-ts-comment': 0,

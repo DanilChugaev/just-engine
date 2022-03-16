@@ -15,6 +15,8 @@ const output = {
   sourcemap: isDev,
 };
 
+console.log(files);
+
 export default {
   input: [
     ...files,

@@ -4,3 +4,7 @@ declare module 'consts:IS_DEV_MODE' {
 
   export default isDev;
 }
+
+type HexadecimalColor = string;
+type Color = HexadecimalColor;
+type Nullable<T> = T | null;
