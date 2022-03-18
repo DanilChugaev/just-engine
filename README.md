@@ -9,7 +9,7 @@ Game engine for building canvas games in browser
 ## Contents
   - [Examples](#examples)
   - [Prerequisites](#prerequisites)
-  - [Run Locally](#run-locally) 
+  - [Local run for development](#-ocal-run-for-development) 
   - [Lint project](#lint-project)
   - [Run tests](#run-tests)
   - [Visualize bundle](#visualize-bundle)
@@ -28,7 +28,7 @@ Game engine for building canvas games in browser
 - [npm](http://npmjs.com)
 - [Node.js](https://nodejs.org/en/download/)
 
-## Run Locally
+## Local run for development
 
 Clone the project
 
@@ -48,11 +48,11 @@ Install dependencies
   npm install
 ```
 
-<!-- Start the development server
+Start the development server
 
 ```bash
   npm run dev
-``` -->
+```
 
 ## Lint project
 
