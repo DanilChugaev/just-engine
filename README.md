@@ -86,7 +86,7 @@ To visualize and analyze your Rollup bundle
 
 ## License
 
-Matter.js is licensed under [The MIT License (MIT)](https://opensource.org/licenses/MIT)  
+Just Engine is licensed under [The MIT License (MIT)](https://opensource.org/licenses/MIT)  
 Copyright (c) 2022 Danil Chugaev
 
 This license is also supplied with the release and source code.  
