@@ -6,6 +6,7 @@ import { visualizer } from 'rollup-plugin-visualizer';
 import postcss from 'rollup-plugin-postcss';
 import consts from 'rollup-plugin-consts';
 import copy from 'rollup-plugin-copy';
+// import license from 'rollup-plugin-license';
 import autoprefixer from 'autoprefixer';
 
 import { DIST_DIR, APP_DIR, isDev, isNeedOpenStats } from './utils';
@@ -21,6 +22,17 @@ export default [
   consts({
     IS_DEV_MODE: isDev,
   }),
+
+  // TODO: uncomment when I do a normal production build of the bundle
+  // /** copy & paste LICENSE into bundle */
+  // !isDev ? license({
+  //   banner: {
+  //     commentStyle: 'regular',
+  //     content: {
+  //       file: 'LICENSE',
+  //     },
+  //   },
+  // }) : null,
 
   /** passing applications through the typescript compiler */
   typescript({
