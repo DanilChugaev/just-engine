@@ -7,6 +7,13 @@ assignees: ''
 
 ---
 
+<!--
+Thank you for reporting an issue!
+
+Before opening an issue _please_ check if a similar issue exists by
+searching existing issues (https://github.com/DanilChugaev/just-engine/issues).
+-->
+
 **Describe the bug**
 A clear and concise description of what the bug is.
 
