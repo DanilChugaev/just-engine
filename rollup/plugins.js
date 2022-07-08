@@ -1,7 +1,6 @@
 import typescript from '@rollup/plugin-typescript';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-import alias from '@rollup/plugin-alias';
 import { terser } from 'rollup-plugin-terser';
 import clear from 'rollup-plugin-clear';
 import { visualizer } from 'rollup-plugin-visualizer';
@@ -50,13 +49,6 @@ export default [
 
   /** locates modules for using third party modules in node_modules */
   nodeResolve(),
-
-  /** defining aliases when bundling packages */
-  alias({
-    entries: [
-      { find: 'dom', replacement: `${APP_DIR}/dom` },
-    ],
-  }),
 
   /** collecting and compiling styles */
   postcss({

@@ -1,4 +1,4 @@
-import { IDom } from 'dom/types';
+import { IDom } from '../dom/types';
 import { TCanvasContext, IContext } from './types';
 
 /** Provides the context of the canvas */
