@@ -1,4 +1,4 @@
-export type CustomProperties = Nullable<{ [key: string] : string }>;
+export type CustomProperties = { [key: string] : string };
 
 export interface UIInterface {
   /**

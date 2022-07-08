@@ -23,5 +23,5 @@ export interface StorageInterface {
      *
      * @param name - name of key in the store
      */
-    get(name: StorageName): StorageValue;
+    get(name: StorageName): StorageValue | null;
 }

@@ -4,16 +4,16 @@ import { CanvasContext, ContextInterface } from './types';
 /** Provides the context of the canvas */
 export class ContextClass implements ContextInterface {
   /** Size of the field in pixels */
-  private canvasSize = 0;
+  private _canvasSize = 0;
 
   /** The ratio of the display resolution of the current device in physical pixels to the resolution in logical (CSS) pixels */
-  private devicePixelRatio = 0;
+  private _devicePixelRatio = 0;
 
   /** Game will be drawn on this canvas */
-  private canvas: Nullable<HTMLCanvasElement> = null;
+  private _canvas: HTMLCanvasElement;
 
   /** Canvas 2d context */
-  private context: Nullable<CanvasContext> = null;
+  private _context: CanvasContext;
 
   /**
    * @param domInstance - allows interact with the DOM tree
@@ -27,8 +27,8 @@ export class ContextClass implements ContextInterface {
       throw new Error('Failed to find a canvas.');
     }
 
-    this.canvas = canvas as HTMLCanvasElement;
-    this.context = this.canvas.getContext('2d');
+    this._canvas = canvas as HTMLCanvasElement;
+    this._context = this._canvas.getContext('2d');
   }
 
   /**
@@ -38,15 +38,15 @@ export class ContextClass implements ContextInterface {
    * @param devicePixelRatio - the ratio of the display resolution
    */
   public init(canvasSize: number, devicePixelRatio: number): void {
-    this.canvasSize = canvasSize;
-    this.devicePixelRatio = devicePixelRatio;
+    this._canvasSize = canvasSize;
+    this._devicePixelRatio = devicePixelRatio;
 
-    this.normalizeScale();
+    this._normalizeScale();
   }
 
   /** Returns canvas 2d context */
   public getInstance(): CanvasContext {
-    return this.context;
+    return this._context;
   }
 
   /**
@@ -55,7 +55,7 @@ export class ContextClass implements ContextInterface {
    * @param callback - a function that is called after clicking on the canvas by left mouse button
    */
   public listenCanvasClick(callback: () => void): void {
-    this.canvas.addEventListener('click', callback);
+    this._canvas.addEventListener('click', callback);
   }
 
   /**
@@ -64,25 +64,25 @@ export class ContextClass implements ContextInterface {
    * @param callback - a function that is called after clicking on the canvas by right mouse button
    */
   public listenCanvasContextMenu(callback: () => void): void {
-    this.canvas.addEventListener('contextmenu', callback);
+    this._canvas.addEventListener('contextmenu', callback);
   }
 
   /** Normalize canvas styles and context scale */
-  private normalizeScale(): void {
-    if (!this.canvas || !this.context) {
+  private _normalizeScale(): void {
+    if (!this._canvas || !this._context) {
       return;
     }
 
-    const ratio = this.devicePixelRatio || 1;
-    const size = this.canvasSize;
+    const ratio = this._devicePixelRatio || 1;
+    const size = this._canvasSize;
 
-    this.canvas.width = size * ratio;
-    this.canvas.height = size * ratio;
+    this._canvas.width = size * ratio;
+    this._canvas.height = size * ratio;
 
-    this.canvas.style.width = `${size}px`;
-    this.canvas.style.height = `${size}px`;
+    this._canvas.style.width = `${size}px`;
+    this._canvas.style.height = `${size}px`;
 
-    this.context.imageSmoothingEnabled = false;
-    this.context.scale(ratio, ratio);
+    this._context.imageSmoothingEnabled = false;
+    this._context.scale(ratio, ratio);
   }
 }

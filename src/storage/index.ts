@@ -25,7 +25,7 @@ export class StorageClass implements StorageInterface {
    *
    * @param name - name of key in the store
    */
-  public get(name: StorageName): StorageValue {
+  public get(name: StorageName): StorageValue | null {
     return this.storage.getItem(name);
   }
 }

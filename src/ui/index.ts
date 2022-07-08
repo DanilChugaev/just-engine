@@ -1,18 +1,20 @@
+import IS_DEV_MODE from 'consts:IS_DEV_MODE';
+
 import { UIInterface, CustomProperties } from './types';
 
 /** Class to control the UI in the game */
 export class UIClass implements UIInterface {
   /** An object that is a CSS declaration block, and exposes style information and various style-related methods and properties */
-  private rootStyles: CSSStyleDeclaration;
+  private _rootStyles: CSSStyleDeclaration;
 
   /** Variables from `:root` declaration */
-  private customProperties: CustomProperties;
+  private _customProperties: CustomProperties = {};
 
   /** Color variables from custom properties */
-  private colors: CustomProperties = {};
+  private _colors: CustomProperties = {};
 
   /** Main font in the game */
-  private font = '';
+  private _font = '';
 
   /**
    * @param windowInstance - window containing a DOM document
@@ -22,79 +24,80 @@ export class UIClass implements UIInterface {
     private windowInstance: Window,
     private arrayInstance: ArrayConstructor,
   ) {
-    this.init();
+    this._init();
   }
 
   /**
    * Returns custom properties from `:root` declaration
    */
   public get getCustomProperties(): CustomProperties {
-    return this.customProperties;
+    return this._customProperties;
   }
 
   /**
    * Returns color variables from custom properties
    */
   public get getColors(): CustomProperties {
-    return this.colors;
+    return this._colors;
   }
 
   /**
    * Get font family
    */
   public get getFont(): string {
-    return this.font;
+    return this._font;
   }
 
   /**
    * Set properties
    */
-  private init(): void {
-    this.rootStyles = this.windowInstance.getComputedStyle(this.windowInstance.document.documentElement);
+  private _init(): void {
+    this._rootStyles = this.windowInstance.getComputedStyle(this.windowInstance.document.documentElement);
 
-    this.setCustomProperties();
-    this.setColors();
-    this.setFont();
+    this._setCustomProperties();
+    this._setColors();
+    this._setFont();
   }
 
   /**
    * Set custom properties from :root
    */
-  private setCustomProperties(): void {
-    this.customProperties = {};
+  private _setCustomProperties(): void {
+    this._customProperties = {};
 
-    const customPropertiesValues = this.arrayInstance.from(this.rootStyles).filter(style => style.indexOf('--') === 0);
+    const customPropertiesValues = this.arrayInstance.from(this._rootStyles).filter(style => style.indexOf('--') === 0);
 
     customPropertiesValues.forEach(prop => {
       // --custom-properties -> CUSTOM_PROPERTIES
-      this.customProperties[
+      this._customProperties[
         prop.split('-')
           .filter(item => item.length !== 0)
           .map(item => item.toUpperCase())
-          .join('_')] = this.rootStyles.getPropertyValue(prop);
+          .join('_')] = this._rootStyles.getPropertyValue(prop);
     });
   }
 
   /**
    * Set colors from custom properties
    */
-  private setColors(): void {
-    for (const key in this.customProperties) {
+  private _setColors(): void {
+    for (const key in this._customProperties) {
       if (key.indexOf('COLOR') >= 0) {
-        this.colors[key] = this.customProperties[key];
+        this._colors[key] = this._customProperties[key];
       }
     }
 
-    // сделать только для режима разработки
-    console.log(this.colors);
+    if (IS_DEV_MODE) {
+      console.log(this._colors);
+    }
   }
 
   /**
    * Set font family from custom properties
    */
-  private setFont(): void {
-    if (this.customProperties['FONT_FAMILY']) {
-      this.font = this.customProperties['FONT_FAMILY'];
+  private _setFont(): void {
+    if (this._customProperties['FONT_FAMILY']) {
+      this._font = this._customProperties['FONT_FAMILY'];
     }
   }
 }
