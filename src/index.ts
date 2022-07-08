@@ -1,11 +1,11 @@
 import IS_DEV_MODE from 'consts:IS_DEV_MODE';
 
-import { ContextClass } from './context';
-import { DomClass } from './dom';
-import { MathClass } from './math';
-import { SourceClass } from './source';
-import { StorageClass } from './storage';
-import { UIClass } from './ui';
+import { CContext } from './context';
+import { CDom } from './dom';
+import { CMath } from './math';
+import { CSource } from './source';
+import { CStorage } from './storage';
+import { CUI } from './ui';
 
 if (IS_DEV_MODE) {
   console.log('is dev');
@@ -14,10 +14,10 @@ if (IS_DEV_MODE) {
 import './index.styl';
 
 export default {
-  ContextClass,
-  DomClass,
-  MathClass,
-  SourceClass,
-  StorageClass,
-  UIClass,
+  CContext,
+  CDom,
+  CMath,
+  CSource,
+  CStorage,
+  CUI,
 };

@@ -8,6 +8,11 @@
     "strict": true,
     "skipLibCheck": true,
     "typeRoots": ["node_modules/@types/"],
-    "strictPropertyInitialization": false
+    "strictPropertyInitialization": false,
+    "paths": {
+      "dom/*": [
+        "./src/dom/*"
+      ],
+    }
   }
 }

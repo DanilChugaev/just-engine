@@ -1,5 +1,7 @@
 import typescript from '@rollup/plugin-typescript';
-import html from '@web/rollup-plugin-html';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import alias from '@rollup/plugin-alias';
 import { terser } from 'rollup-plugin-terser';
 import clear from 'rollup-plugin-clear';
 import { visualizer } from 'rollup-plugin-visualizer';
@@ -7,6 +9,8 @@ import postcss from 'rollup-plugin-postcss';
 import consts from 'rollup-plugin-consts';
 import copy from 'rollup-plugin-copy';
 // import license from 'rollup-plugin-license';
+
+import html from '@web/rollup-plugin-html';
 import autoprefixer from 'autoprefixer';
 
 import { DIST_DIR, APP_DIR, isDev, isNeedOpenStats } from './utils';
@@ -37,6 +41,21 @@ export default [
   /** passing applications through the typescript compiler */
   typescript({
     tsconfig: './tsconfig.json',
+  }),
+
+  /** convert CommonJS modules to ES6, so they can be included in a Rollup bundle */
+  commonjs({
+    include: 'node_modules/**',
+  }),
+
+  /** locates modules for using third party modules in node_modules */
+  nodeResolve(),
+
+  /** defining aliases when bundling packages */
+  alias({
+    entries: [
+      { find: 'dom', replacement: `${APP_DIR}/dom` },
+    ],
   }),
 
   /** collecting and compiling styles */
