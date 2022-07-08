@@ -1,7 +1,7 @@
-import { SourceInterface } from './types';
+import { ISource } from './types';
 
 /** To interact with the file system */
-export class SourceClass implements SourceInterface {
+export class CSource implements ISource {
   /**
    * @param ImageProvider - returns image object
    */

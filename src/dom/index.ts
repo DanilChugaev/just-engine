@@ -1,7 +1,7 @@
-import { DomInterface } from './types';
+import { IDom } from './types';
 
 /** Class allows interact with the DOM tree */
-export class DomClass implements DomInterface {
+export class CDom implements IDom {
   /**
    * @param windowInstance - window containing a DOM document
    */

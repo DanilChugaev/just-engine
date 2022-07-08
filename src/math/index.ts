@@ -1,7 +1,7 @@
-import { MathInterface } from './types';
+import { IMath } from './types';
 
 /** Math number generator */
-export class MathClass implements MathInterface {
+export class CMath implements IMath {
   /**
    * @param math - returns Math object
    */

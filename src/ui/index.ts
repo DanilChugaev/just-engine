@@ -1,17 +1,17 @@
 import IS_DEV_MODE from 'consts:IS_DEV_MODE';
 
-import { UIInterface, CustomProperties } from './types';
+import { IUI, TCustomProperties } from './types';
 
 /** Class to control the UI in the game */
-export class UIClass implements UIInterface {
+export class CUI implements IUI {
   /** An object that is a CSS declaration block, and exposes style information and various style-related methods and properties */
   private _rootStyles: CSSStyleDeclaration;
 
   /** Variables from `:root` declaration */
-  private _customProperties: CustomProperties = {};
+  private _customProperties: TCustomProperties = {};
 
   /** Color variables from custom properties */
-  private _colors: CustomProperties = {};
+  private _colors: TCustomProperties = {};
 
   /** Main font in the game */
   private _font = '';
@@ -30,14 +30,14 @@ export class UIClass implements UIInterface {
   /**
    * Returns custom properties from `:root` declaration
    */
-  public get getCustomProperties(): CustomProperties {
+  public get getCustomProperties(): TCustomProperties {
     return this._customProperties;
   }
 
   /**
    * Returns color variables from custom properties
    */
-  public get getColors(): CustomProperties {
+  public get getColors(): TCustomProperties {
     return this._colors;
   }
 

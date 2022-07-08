@@ -1,7 +1,7 @@
-import { StorageInterface, StorageItem, StorageName, StorageValue } from './types';
+import { IStorage, TStorageItem, TStorageName, TStorageValue } from './types';
 
 /** Long-term storage of game data */
-export class StorageClass implements StorageInterface {
+export class CStorage implements IStorage {
   /**
    * @param storage - Web Storage API interface provides access to a particular domain's session or local storage
    */
@@ -16,7 +16,7 @@ export class StorageClass implements StorageInterface {
    * @param storageItem.name - name of key in the store
    * @param storageItem.value - the key value in the store
    */
-  public save({ name, value }: StorageItem): void {
+  public save({ name, value }: TStorageItem): void {
     this.storage.setItem(name, value);
   }
 
@@ -25,7 +25,7 @@ export class StorageClass implements StorageInterface {
    *
    * @param name - name of key in the store
    */
-  public get(name: StorageName): StorageValue | null {
+  public get(name: TStorageName): TStorageValue | null {
     return this.storage.getItem(name);
   }
 }

@@ -1,27 +1,27 @@
 /** Name of key in the store */
-export type StorageName = string;
+export type TStorageName = string;
 /** Value in the store */
-export type StorageValue = string;
+export type TStorageValue = string;
 
 /** Stored item */
-export type StorageItem = {
-    name: StorageName;
-    value: StorageValue;
+export type TStorageItem = {
+    name: TStorageName;
+    value: TStorageValue;
 };
 
 /** Long-term storage of game data */
-export interface StorageInterface {
+export interface IStorage {
     /**
      * Saves an item to storage
      *
      * @param storageItem - stored item
      */
-    save(item: StorageItem): void;
+    save(item: TStorageItem): void;
 
     /**
      * Get item from storage
      *
      * @param name - name of key in the store
      */
-    get(name: StorageName): StorageValue | null;
+    get(name: TStorageName): TStorageValue | null;
 }

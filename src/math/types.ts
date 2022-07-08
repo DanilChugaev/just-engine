@@ -1,5 +1,5 @@
 /** Math number generator */
-export interface MathInterface {
+export interface IMath {
     /**
      * Returns a random integer in a specified range
      *

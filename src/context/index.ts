@@ -1,8 +1,8 @@
-import { DomInterface } from '../dom/types';
-import { CanvasContext, ContextInterface } from './types';
+import { IDom } from '../dom/types';
+import { TCanvasContext, IContext } from './types';
 
 /** Provides the context of the canvas */
-export class ContextClass implements ContextInterface {
+export class CContext implements IContext {
   /** Size of the field in pixels */
   private _canvasSize = 0;
 
@@ -13,13 +13,13 @@ export class ContextClass implements ContextInterface {
   private _canvas: HTMLCanvasElement;
 
   /** Canvas 2d context */
-  private _context: CanvasContext;
+  private _context: TCanvasContext;
 
   /**
    * @param domInstance - allows interact with the DOM tree
    */
   constructor(
-    private domInstance: DomInterface,
+    private domInstance: IDom,
   ) {
     const canvas = this.domInstance.getElement('canvas');
 
@@ -45,7 +45,7 @@ export class ContextClass implements ContextInterface {
   }
 
   /** Returns canvas 2d context */
-  public getInstance(): CanvasContext {
+  public getInstance(): TCanvasContext {
     return this._context;
   }
 

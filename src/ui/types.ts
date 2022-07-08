@@ -1,15 +1,15 @@
-export type CustomProperties = { [key: string] : string };
+export type TCustomProperties = { [key: string] : string };
 
-export interface UIInterface {
+export interface IUI {
   /**
    * Returns custom properties from :root declaration
    */
-  get getCustomProperties(): CustomProperties;
+  get getCustomProperties(): TCustomProperties;
 
   /**
    * Returns color variables from custom properties
    */
-  get getColors(): CustomProperties;
+  get getColors(): TCustomProperties;
 
   /**
    * Returns font family from custom properties

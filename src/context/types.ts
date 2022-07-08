@@ -1,12 +1,12 @@
 /** Canvas context */
-export type CanvasContext = Nullable<CanvasRenderingContext2D>;
+export type TCanvasContext = Nullable<CanvasRenderingContext2D>;
 
 /** Provides the context of the canvas */
-export interface ContextInterface {
+export interface IContext {
   init(canvasSize: number, devicePixelRatio: number): void;
 
   /** Returns canvas 2d context */
-  getInstance(): CanvasContext;
+  getInstance(): TCanvasContext;
 
   /**
    * Listen to clicking on the canvas
