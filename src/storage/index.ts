@@ -1,4 +1,4 @@
-import { IStorage, TStorageItem, TStorageName, TStorageValue } from './types';
+import { IStorage, IStorageItem, TStorageName, TStorageValue } from './types';
 
 /** Long-term storage of game data */
 export class CStorage implements IStorage {
@@ -16,7 +16,7 @@ export class CStorage implements IStorage {
    * @param storageItem.name - name of key in the store
    * @param storageItem.value - the key value in the store
    */
-  public save({ name, value }: TStorageItem): void {
+  public save({ name, value }: IStorageItem): void {
     this.storage.setItem(name, value);
   }
 
