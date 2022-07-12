@@ -1,0 +1,1 @@
+export const INITIAL_ITERATION_VALUE = 0;
