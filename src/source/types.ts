@@ -3,7 +3,7 @@ export interface ISource {
     /**
      * Returns image file
      *
-     * @param name - image file name
+     * @param path - path to image file
      */
-    getImage(name: string): CanvasImageSource;
+    getImage(path: string): CanvasImageSource;
 }

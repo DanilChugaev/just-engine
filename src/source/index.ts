@@ -12,12 +12,12 @@ export class CSource implements ISource {
   /**
    * Returns image file
    *
-   * @param name - image file name
+   * @param path - path to image file
    */
-  public getImage(name: string): CanvasImageSource {
+  public getImage(path: string): CanvasImageSource {
     const img = new this.ImageProvider();
 
-    img.src = `img/${name}.png`;
+    img.src = path;
 
     return img;
   }
