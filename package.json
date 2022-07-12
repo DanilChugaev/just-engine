@@ -1,6 +1,6 @@
 {
   "name": "just-engine",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Game engine for creating 2d games",
   "main": "index.js",
   "scripts": {
