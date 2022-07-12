@@ -1,11 +1,14 @@
+export type ElementParams = { [key: string] : string | boolean };
+
 /** Allows interact with the DOM tree */
 export interface IDom {
     /**
      * Create HTML element
      *
-     * @param name - name of HTML element
+     * @param tag - name of HTML element
+     * @param params - params of HTML element
      */
-    createElement(name: string): Nullable<HTMLElement>;
+    createElement(tag: string, params?: ElementParams): Nullable<HTMLElement>;
 
     /**
      * Returns HTML element by ID

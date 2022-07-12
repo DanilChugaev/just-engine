@@ -1,4 +1,4 @@
-import { IDom } from './types';
+import { IDom, ElementParams } from './types';
 
 /** Class allows interact with the DOM tree */
 export class CDom implements IDom {
@@ -12,10 +12,20 @@ export class CDom implements IDom {
   /**
    * Create HTML element
    *
-   * @param name - name of HTML element
+   * @param tag - name of HTML element
+   * @param params - params of HTML element
    */
-  public createElement(name: string): Nullable<HTMLElement> {
-    return this.windowInstance.document.createElement(name);
+  public createElement(tag: string, params?: ElementParams): Nullable<HTMLElement> {
+    const element = this.windowInstance.document.createElement(tag);
+
+    if (params && Object.keys(params).length > 0) {
+      for (const param in params) {
+        // @ts-ignore
+        element[param] = params[param];
+      }
+    }
+
+    return element;
   }
 
   /**
