@@ -4,10 +4,10 @@ export type TStorageName = string;
 export type TStorageValue = string;
 
 /** Stored item */
-export type TStorageItem = {
+export interface IStorageItem {
     name: TStorageName;
     value: TStorageValue;
-};
+}
 
 /** Long-term storage of game data */
 export interface IStorage {
@@ -16,7 +16,7 @@ export interface IStorage {
      *
      * @param storageItem - stored item
      */
-    save(item: TStorageItem): void;
+    save(item: IStorageItem): void;
 
     /**
      * Get item from storage
