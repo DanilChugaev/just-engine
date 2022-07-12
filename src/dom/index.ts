@@ -47,4 +47,14 @@ export class CDom implements IDom {
       callback(event);
     });
   }
+
+  /**
+   * Set text into HTML element
+   *
+   * @param element - target HTML element
+   * @param text - text for set into HTML eleemnt
+   */
+  public setText(element: HTMLElement, text: string): void {
+    element.textContent = text;
+  }
 }
