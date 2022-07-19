@@ -25,10 +25,10 @@ export interface IDom {
     afterLoad(callback: () => void): void;
 
     /**
-     * Set text into HTML element
+     * Replace or return text content of HTML element
      *
      * @param element - target HTML element
      * @param text - text for set into HTML eleemnt
      */
-    setText(element: HTMLElement, text: string): void;
+    text(element: HTMLElement, text?: string): string | void;
 }

@@ -49,12 +49,16 @@ export class CDom implements IDom {
   }
 
   /**
-   * Set text into HTML element
+   * Replace or return text content of HTML element
    *
    * @param element - target HTML element
    * @param text - text for set into HTML eleemnt
    */
-  public setText(element: HTMLElement, text: string): void {
+  public text(element: HTMLElement, text?: string): string | void {
+    if (text === undefined) {
+      return (element.textContent as string);
+    }
+
     element.textContent = text;
   }
 }
