@@ -1,7 +1,19 @@
-import { IDom, ElementParams } from './types';
+import {
+  IDom,
+  TDomElementParams,
+  TDomTargetElement,
+  TDomListenerEventName,
+  TDomCallback,
+  IDomEventList,
+} from './types';
 
 /** Class allows interact with the DOM tree */
 export class CDom implements IDom {
+  /**
+   * List with DOM event listeners
+   */
+  private _eventList: IDomEventList[] = [];
+
   /**
    * @param windowInstance - window containing a DOM document
    */
@@ -10,12 +22,41 @@ export class CDom implements IDom {
   ) {}
 
   /**
+   * Add event listener to an element
+   *
+   * @param element - target element
+   * @param eventName - event name
+   * @param callback - event handler
+   */
+  public on(element: TDomTargetElement, eventName: TDomListenerEventName, callback: TDomCallback): void {
+    element.addEventListener(eventName, callback);
+
+    this._eventList.push({ element, eventName, callback });
+  }
+
+  /**
+   * Removes event listener from an element
+   *
+   * @param element - target element
+   * @param eventName - event name
+   */
+  public off(element: TDomTargetElement, eventName: TDomListenerEventName): void {
+    const foundEvent = this._eventList.find((event) => event.eventName === eventName);
+
+    if (foundEvent) {
+      element.removeEventListener(foundEvent.eventName, foundEvent.callback);
+
+      this._eventList.splice(this._eventList.indexOf(foundEvent), 1);
+    }
+  }
+
+  /**
    * Create HTML element
    *
    * @param tag - name of HTML element
    * @param params - params of HTML element
    */
-  public createElement(tag: string, params?: ElementParams): Nullable<HTMLElement> {
+  public createElement(tag: string, params?: TDomElementParams): Nullable<TDomTargetElement> {
     const element = this.windowInstance.document.createElement(tag);
 
     if (params && Object.keys(params).length > 0) {
@@ -33,7 +74,7 @@ export class CDom implements IDom {
    *
    * @param id - ID of HTML element
    */
-  public getElement(id: string): Nullable<HTMLElement> {
+  public getElementById(id: string): Nullable<TDomTargetElement> {
     return this.windowInstance.document.getElementById(id);
   }
 
@@ -42,10 +83,8 @@ export class CDom implements IDom {
    *
    * @param callback - function that is called after loading the DOM tree
    */
-  public afterLoad(callback: (event: Event) => void): void {
-    this.windowInstance.document.addEventListener('DOMContentLoaded', (event: Event) => {
-      callback(event);
-    });
+  public afterLoad(callback: TDomCallback): void {
+    this.on(this.windowInstance.document, 'DOMContentLoaded', callback);
   }
 
   /**
@@ -54,7 +93,7 @@ export class CDom implements IDom {
    * @param element - target HTML element
    * @param text - text for set into HTML eleemnt
    */
-  public text(element: HTMLElement, text?: string): string | void {
+  public text(element: TDomTargetElement, text?: string): string | void {
     if (text === undefined) {
       return (element.textContent as string);
     }

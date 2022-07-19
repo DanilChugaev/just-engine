@@ -21,7 +21,7 @@ export class CContext implements IContext {
   constructor(
     private domInstance: IDom,
   ) {
-    const canvas = this.domInstance.getElement('canvas');
+    const canvas = this.domInstance.getElementById('canvas');
 
     if (!canvas) {
       throw new Error('Failed to find a canvas.');
